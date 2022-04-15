@@ -26,13 +26,13 @@ public class ClassBuilder
     
     internal ConstructorDeclarationSyntax? Constructor = null;
 
-    private readonly string _memberName;
+    internal readonly string Name;
 
     internal BaseListSyntax? BaseList = null;
 
     private ClassBuilder(string name)
     {
-        _memberName = name;
+        Name = name;
     }
 
     public readonly List<FieldDeclarationSyntax> Fields = new();
@@ -46,7 +46,7 @@ public class ClassBuilder
 
     public ClassDeclarationSyntax Build()
     {
-        var classDeclarationSyntax = ClassDeclaration(_memberName)
+        var classDeclarationSyntax = ClassDeclaration(Name)
             .AddModifiers(BuildModifiers())
             .WithBaseList(BaseList)
             .WithFields(Fields)

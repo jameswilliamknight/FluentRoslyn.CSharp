@@ -23,11 +23,13 @@ public static class ClassBuilderExtensions
         return builder;
     }
     
-    public static ClassBuilder WithConstructor(this ClassBuilder builder,
-        ConstructorBuilder constructorBuilder)
+    public static ClassBuilder WithConstructor(this ClassBuilder classBuilder,
+        Func<ConstructorBuilder, ConstructorBuilder> classConstructor)
     {
-        builder.Constructor = constructorBuilder.Build();
-        return builder;
+        var constructorBuilder = ConstructorBuilder.Create(classBuilder.Name);
+        var constructor = classConstructor(constructorBuilder).Build();
+        classBuilder.Constructor = constructor;
+        return classBuilder;
     }
 
     public static ClassBuilder WithMethod(this ClassBuilder builder,

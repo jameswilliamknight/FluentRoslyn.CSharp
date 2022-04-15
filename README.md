@@ -76,7 +76,7 @@ dotnet new console --name "$generatorProject"
 dotnet sln add "$generatorProject"
 ```
 
-## Create a generator 'set'
+## Create a file set generator method
 
 example for generating query:
 
@@ -94,6 +94,7 @@ internal class ApiGenerator
         _fileRepository = fileRepository;
     }
 
+    // example method that generates a set of files for a "query" in your api project
     internal void GenerateQuery(ProjectInfo project, Entity entity)
     {
         // response

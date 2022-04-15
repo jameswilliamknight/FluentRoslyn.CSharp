@@ -6,6 +6,50 @@ A fluent builder-pattern syntax for orchestration of domain-specific code genera
 
 🔎 Find it on [`nuget.org`](https://www.nuget.org/packages/StarBridge.FluentRoslyn.CSharp)
 
+# Cold Open (Example)
+
+```csharp
+var sourceFileContents = SourceFileBuilder
+    .Create($"MyDomain.Infrastructure.Queries.MyEntities")
+    .Using(
+        "System.Threading",
+        "System.Threading.Tasks",
+        "MediatR",
+        "MyDomain.API.SDK.Clients.QueryResponses")
+    .AddClass(handlerName, @class => @class
+        .WithBase($"IRequestHandler<GetMyEntity, GetMyEntityResponse>")
+        .AddField(
+            "IMyEntityQueryRepository",
+            field => field
+                .WithAccessibility(Access.Private)
+                .AsReadOnly())
+        .WithConstructor(ConstructorBuilder
+            .Create(handlerName)
+            .WithParameters(parameters => parameters
+                .AddParameter("IMyEntityQueryRepository", "myEntityQueryRepository")
+            )
+            .WithBody(body => body
+                .AddStatement("_myEntityQueryRepository = myEntityQueryRepository;")
+            )
+        )
+        .WithMethod(
+            "Handle",
+            method => method
+                .WithAccessibility(Access.Public)
+                .WithParameters(parameters => parameters
+                    .AddParameter("GetMyEntity", "query")
+                    .AddParameter("CancellationToken"))
+                .WithBody(body => body
+                    .AddStatement("var entity = await _myEntityQueryRepository.GetAsync(query.Id);")
+                    .AddStatement("return new(entity.Identity, entity.Name, entity.Description);")
+                )
+                .Returns("GetMyEntityResponse")
+                .AsAsync()
+        )
+    )
+    .Build();
+```
+
 
 # Getting Started
 
@@ -85,7 +129,7 @@ var project = new ProjectInfo(projectName, projectDir);
 
 var entity = new Entity(
     new EntityName(
-        Singular: "AnEntity",
+        Singular: "MyEntity",
         Plural: "TheEntities"));
 
 apiGenerator.GenerateQuery(project, entity);
@@ -105,7 +149,7 @@ namespace MyDomain.CodeGenerator;
 public static class ApiQueryFactory
 {
     /// <summary>
-    ///     Generates <b>MyDomain.API.SDK/Clients/QueryTheEntities/GetAnEntityResponse.cs</b>
+    ///     Generates <b>MyDomain.API.SDK/Clients/QueryTheEntities/GetMyEntityResponse.cs</b>
     /// </summary>
     internal static GeneratedFile GenerateQueryResponse(this Entity entity, ProjectInfo project)
     {
@@ -127,12 +171,12 @@ public static class ApiQueryFactory
     }
 
     /// <summary>
-    ///     Generates <b>MyDomain.Infrastructure.Queries/TheEntities/GetAnEntity.cs</b>
+    ///     Generates <b>MyDomain.Infrastructure.Queries/TheEntities/GetMyEntity.cs</b>
     /// </summary>
     internal static GeneratedFile GenerateQuery(this Entity entity, ProjectInfo project) { /**/ }
 
     /// <summary>
-    ///     Generates <b>MyDomain.Infrastructure.Queries/Resources/GetResourceHandler.cs</b>
+    ///     Generates <b>MyDomain.Infrastructure.Queries/MyEntities/GetMyEntityHandler.cs</b>
     /// </summary>
     internal static GeneratedFile GenerateQueryHandler(this Entity entity, ProjectInfo project) { /**/ }
 }

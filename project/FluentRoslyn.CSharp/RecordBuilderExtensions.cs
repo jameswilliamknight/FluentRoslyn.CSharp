@@ -5,7 +5,7 @@ namespace FluentRoslyn.CSharp;
 
 public static class RecordBuilderExtensions
 {
-    public static RecordBuilder WithParameters(this RecordBuilder builder,
+    public static RecordBuilder WithImmutableProps(this RecordBuilder builder,
         Func<ParametersBuilder, ParametersBuilder> classMethod)
     {
         var parametersBuilder = ParametersBuilder.Create();

@@ -7,44 +7,16 @@ namespace FluentRoslyn.CSharp;
 
 public static class ParameterBuilderExtensions
 {
-    public static ParametersBuilder AddParameter(this ParametersBuilder builder, 
-        SyntaxKind type,
-        string name)
-    {
-        // prefix a comma delimiter if there are existing parameters.
-        var length = builder.Parameters.Count;
-        if (length > 0)
-        {
-            builder.Parameters.Add(Token(SyntaxKind.CommaToken));
-        }
-
-        var param = Parameter(Identifier(name)).WithType(type);
-        builder.Parameters.Add(param);
-        return builder;
-    }
-    
     public static ParametersBuilder AddParameter(this ParametersBuilder builder,
         string type)
     {
         builder.AddParameter(type, type.ToCamelCase());
         return builder;
     }
-    
-    public static ParametersBuilder AddParameter(this ParametersBuilder builder,
-        TypeSyntax type,
-        string name)
-    {
-        var length = builder.Parameters.Count;
-        if (length > 0)
-        {
-            builder.Parameters.Add(Token(SyntaxKind.CommaToken));
-        }
 
-        var param = Parameter(Identifier(name)).WithType(type);
-        builder.Parameters.Add(param);
-        return builder;
-    }
-    
+    /// <summary>
+    ///     Add a parameter of a type that does not exist yet
+    /// </summary>
     public static ParametersBuilder AddParameter(this ParametersBuilder builder, 
         string type,
         string name)
@@ -56,6 +28,24 @@ public static class ParameterBuilderExtensions
         }
 
         var param = Parameter(Identifier(name)).WithType(IdentifierName(type));
+        builder.Parameters.Add(param);
+        return builder;
+    }
+
+    /// <summary>
+    ///     Add a parameter of a known type
+    /// </summary>
+    public static ParametersBuilder AddParameter(this ParametersBuilder builder,
+        Type type,
+        string name)
+    {
+        var length = builder.Parameters.Count;
+        if (length > 0)
+        {
+            builder.Parameters.Add(Token(SyntaxKind.CommaToken));
+        }
+
+        var param = Parameter(Identifier(name)).WithType(IdentifierName(type.Name));
         builder.Parameters.Add(param);
         return builder;
     }

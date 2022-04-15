@@ -8,7 +8,7 @@ namespace FluentRoslyn.CSharp;
 public class SourceFileBuilder
 {
     internal readonly List<string> Usings = new();
-    
+
     internal RecordDeclarationSyntax? SourceFileRecord = null;
     internal ClassDeclarationSyntax? SourceFileClass = null;
 
@@ -23,13 +23,13 @@ public class SourceFileBuilder
     {
         return new(@namespace);
     }
-    
+
     public string Build()
     {
         var records = SourceFileRecord as MemberDeclarationSyntax;
         var classes = SourceFileClass as MemberDeclarationSyntax;
-        var type = records ?? 
-                   classes ?? 
+        var type = records ??
+                   classes ??
                    throw new("source files require a type");
 
         var sourceFileString = CompilationUnit()
@@ -38,7 +38,7 @@ public class SourceFileBuilder
             .AddMembers(type)
             .NormalizeWhitespace()
             .ToFullString();
-        
+
         return sourceFileString;
     }
 }

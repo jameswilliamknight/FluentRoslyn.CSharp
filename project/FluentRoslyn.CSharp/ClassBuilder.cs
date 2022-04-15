@@ -15,15 +15,15 @@ public class ClassBuilder
         {
             SyntaxKind.PublicKeyword
         };
-        
+
         if (IsReadOnly)
         {
             modifiers.Add(SyntaxKind.ReadOnlyKeyword);
         }
-        
+
         return modifiers.ToArray();
     }
-    
+
     internal ConstructorDeclarationSyntax? Constructor = null;
 
     internal readonly string Name;
@@ -36,7 +36,7 @@ public class ClassBuilder
     }
 
     public readonly List<FieldDeclarationSyntax> Fields = new();
-    
+
     public readonly List<MethodDeclarationSyntax> Methods = new();
 
     public static ClassBuilder Create(string name)
@@ -52,7 +52,7 @@ public class ClassBuilder
             .WithFields(Fields)
             .WithConstructor(Constructor ?? throw new("Missing Constructor"))
             .WithMethods(Methods);
-        
+
         return classDeclarationSyntax;
     }
 }

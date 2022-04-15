@@ -8,12 +8,12 @@ namespace FluentRoslyn.CSharp;
 public class ConstructorBuilder
 {
     internal ParameterListSyntax? Parameters = null;
-    
+
     private readonly string _memberName;
-    
+
     private ConstructorBuilder(string memberName)
     {
-        _memberName = memberName;   
+        _memberName = memberName;
     }
 
     public BlockSyntax? Body = null;
@@ -22,7 +22,7 @@ public class ConstructorBuilder
     {
         return new(memberName);
     }
-    
+
     public ConstructorDeclarationSyntax Build()
     {
         return ConstructorDeclaration(

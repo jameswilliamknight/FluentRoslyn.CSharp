@@ -17,7 +17,7 @@ public static class ParameterBuilderExtensions
     /// <summary>
     ///     Add a parameter of a type that does not exist yet
     /// </summary>
-    public static ParametersBuilder AddParameter(this ParametersBuilder builder, 
+    public static ParametersBuilder AddParameter(this ParametersBuilder builder,
         string type,
         string name)
     {
@@ -50,7 +50,7 @@ public static class ParameterBuilderExtensions
         return builder;
     }
 
-    private static ParameterSyntax WithType(this ParameterSyntax syntax, 
+    private static ParameterSyntax WithType(this ParameterSyntax syntax,
         SyntaxKind type)
     {
         return syntax.WithType(PredefinedType(Token(type)));

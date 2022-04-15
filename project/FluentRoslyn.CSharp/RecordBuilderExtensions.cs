@@ -22,7 +22,7 @@ public static class RecordBuilderExtensions
                 SimpleBaseType(IdentifierName(inheritance.First()))));
         return builder;
     }
-    
+
     public static RecordBuilder AsReadOnly(
         this RecordBuilder builder)
     {

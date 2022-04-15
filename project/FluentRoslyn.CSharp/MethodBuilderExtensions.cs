@@ -22,7 +22,7 @@ public static class MethodBuilderExtensions
         return builder;
     }
 
-    public static MethodBuilder Returns(this MethodBuilder builder, 
+    public static MethodBuilder Returns(this MethodBuilder builder,
         string returnType)
     {
         builder.ReturnType = returnType;

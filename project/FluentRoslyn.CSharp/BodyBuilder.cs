@@ -6,11 +6,11 @@ namespace FluentRoslyn.CSharp;
 public class BodyBuilder
 {
     internal readonly List<StatementSyntax> Statements = new();
-    
+
     private BodyBuilder()
     {
     }
-    
+
     public static BodyBuilder Create()
     {
         return new();

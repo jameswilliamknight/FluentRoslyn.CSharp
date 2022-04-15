@@ -5,7 +5,7 @@ namespace FluentRoslyn.CSharp;
 
 public static class ClassBuilderExtensions
 {
-    public static ClassBuilder WithBase(this ClassBuilder builder, 
+    public static ClassBuilder WithBase(this ClassBuilder builder,
         params string[] inheritance)
     {
         builder.BaseList = BaseList(
@@ -13,7 +13,7 @@ public static class ClassBuilderExtensions
                 SimpleBaseType(IdentifierName(inheritance.First()))));
         return builder;
     }
-    
+
     public static ClassBuilder AddField(this ClassBuilder builder, string type,
         Func<FieldBuilder, FieldBuilder> classField)
     {
@@ -22,7 +22,7 @@ public static class ClassBuilderExtensions
         builder.Fields.Add(field);
         return builder;
     }
-    
+
     public static ClassBuilder WithConstructor(this ClassBuilder classBuilder,
         Func<ConstructorBuilder, ConstructorBuilder> classConstructor)
     {
@@ -41,7 +41,7 @@ public static class ClassBuilderExtensions
         builder.Methods.Add(method);
         return builder;
     }
-    
+
     public static ClassBuilder AsReadOnly(this ClassBuilder builder)
     {
         builder.IsReadOnly = true;

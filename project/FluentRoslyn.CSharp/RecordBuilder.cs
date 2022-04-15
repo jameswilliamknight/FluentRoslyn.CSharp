@@ -15,9 +15,9 @@ public class RecordBuilder : MemberBuilderBase
 
     private RecordBuilder(string name)
     {
-        _memberName = name;   
+        _memberName = name;
     }
-    
+
     public static RecordBuilder Create(string name)
     {
         return new(name);
@@ -30,7 +30,7 @@ public class RecordBuilder : MemberBuilderBase
                 Identifier(_memberName))
             .WithClassOrStructKeyword(Token(SyntaxKind.ClassKeyword))
             .AddModifiers(BuildModifiers())
-            .WithParameterList(Parameters ?? throw new("Missing Parameters") /* require >= 1 */)            
+            .WithParameterList(Parameters ?? throw new("Missing Parameters") /* require >= 1 */)
             .WithBaseList(BaseList)
             .WithSemicolonToken(Token(SyntaxKind.SemicolonToken));
     }

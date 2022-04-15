@@ -2,7 +2,7 @@
 
 public static class SourceFileBuilderExtensions
 {
-    public static SourceFileBuilder AddRecord(this SourceFileBuilder builder, 
+    public static SourceFileBuilder AddRecord(this SourceFileBuilder builder,
         string recordName,
         Func<RecordBuilder, RecordBuilder> sourceFileRecord)
     {

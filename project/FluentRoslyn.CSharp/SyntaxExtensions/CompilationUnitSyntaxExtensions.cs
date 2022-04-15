@@ -10,12 +10,12 @@ public static class CompilationUnitSyntaxExtensions
     {
         return unit.AddMembers(FileScopedNamespaceDeclaration(ParseName(@namespace)));
     }
-    
+
     public static CompilationUnitSyntax Using(this CompilationUnitSyntax unit, IEnumerable<string> usings)
     {
         return unit.WithUsings(GenerateUsings(usings.ToArray()));
     }
-    
+
     private static SyntaxList<UsingDirectiveSyntax> GenerateUsings(params string[] usings)
     {
         var usingDirectives = List(usings.Select(x => UsingDirective(ParseName(x))).ToArray());

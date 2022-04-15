@@ -31,7 +31,7 @@ public class GenerateRecordTests
 
         sourceFileContents.Should().BeEquivalentTo(expected);
     }
-    
+
     [Fact]
     public void GenerateClass()
     {

@@ -7,7 +7,7 @@ namespace FluentRoslyn.CSharp;
 public class ParametersBuilder
 {
     internal readonly List<SyntaxNodeOrToken> Parameters = new();
-    
+
     public static ParametersBuilder Create()
     {
         return new();

@@ -6,7 +6,7 @@ namespace FluentRoslyn.CSharp.SyntaxExtensions;
 
 public static class MethodDeclarationSyntaxExtensions
 {
-    public static MethodDeclarationSyntax ConfigureAsync(this MethodDeclarationSyntax syntax, 
+    public static MethodDeclarationSyntax ConfigureAsync(this MethodDeclarationSyntax syntax,
         bool isAsync)
     {
         if (isAsync)
@@ -17,7 +17,7 @@ public static class MethodDeclarationSyntaxExtensions
         return syntax;
     }
 
-    private static MethodDeclarationSyntax AddModifiers(this MethodDeclarationSyntax syntax, 
+    private static MethodDeclarationSyntax AddModifiers(this MethodDeclarationSyntax syntax,
         params SyntaxKind[] kinds)
     {
         syntax = syntax.AddModifiers(kinds.Select(SyntaxFactory.Token).ToArray());

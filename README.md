@@ -44,7 +44,7 @@ namespace MyDomain.CodeGenerator;
 
 internal class ApiGenerator
 {
-    private readonly IFileRepository _fileRepository = new();
+    private readonly IFileRepository _fileRepository;
 
     public ApiGenerator(IFileRepository fileRepository)
     {

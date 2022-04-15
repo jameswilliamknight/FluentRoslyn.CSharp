@@ -166,7 +166,9 @@ public static class ApiQueryFactory
                     .AddParameter(SyntaxKind.StringKeyword, "Name")
                     .AddParameter(SyntaxKind.StringKeyword, "Description")))
             .Build();
+
         var responseFile = new GeneratedFile(responseFileInfo, responseFileContents);
+
         return responseFile;
     }
 

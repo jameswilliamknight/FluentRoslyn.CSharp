@@ -23,7 +23,7 @@ var sourceFileContents = SourceFileBuilder
             field => field
                 .WithAccessibility(Access.Private)
                 .AsReadOnly())
-            .WithConstructor(ctor => ctor
+        .WithConstructor(ctor => ctor
             .WithParameters(parameters => parameters
                 .AddParameter("IMyEntityQueryRepository", "myEntityQueryRepository")
             )

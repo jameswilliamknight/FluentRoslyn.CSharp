@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentRoslyn.CSharp", "FluentRoslyn.CSharp\FluentRoslyn.CSharp.csproj", "{6F4F60D6-E485-4D8E-BE99-2D46635CB3A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentRoslyn.CSharp.Tests", "FluentRoslyn.CSharp.Tests\FluentRoslyn.CSharp.Tests.csproj", "{1FD48FC8-6D91-47B1-BF3F-C2DEE6823992}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F4F60D6-E485-4D8E-BE99-2D46635CB3A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F4F60D6-E485-4D8E-BE99-2D46635CB3A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F4F60D6-E485-4D8E-BE99-2D46635CB3A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F4F60D6-E485-4D8E-BE99-2D46635CB3A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FD48FC8-6D91-47B1-BF3F-C2DEE6823992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD48FC8-6D91-47B1-BF3F-C2DEE6823992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD48FC8-6D91-47B1-BF3F-C2DEE6823992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD48FC8-6D91-47B1-BF3F-C2DEE6823992}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
